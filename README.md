@@ -1,73 +1,93 @@
-# React + TypeScript + Vite
+# Система управления объявлениями для модерации (Авито)
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Этот проект — решение тестового задания на стажировку Avito (фронтенд).
+Приложение представляет собой интерфейс модерации объявлений, работающий через предоставленный REST API (tech-int3-server).
 
-Currently, two official plugins are available:
+https://github.com/avito-tech/tech-internship/tree/main/Tech%20Internships/Frontend/Frontend-trainee-assignment-autumn-2025/tech-int3-server
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Функционал
 
-## React Compiler
+### 📌 1. Список объявлений (/list)
+Полностью реализованы требования:
+- Отображение объявлений в виде карточек
+- Категория объявления  
+- Дата создания  
+- Статус:  
+  - **На модерации**  
+  - **Одобрено**  
+  - **Отклонено**  
+- Индикатор приоритета (**обычный / срочный**)
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### 🔍 Фильтрация и поиск:
+- Множественный выбор по статусам  
+- Фильтр по категории  
+- Фильтр по диапазону цен  
+- Поиск по названию объявления  
+- Кнопка сброса фильтров  
 
-## Expanding the ESLint configuration
+### ↕️ Сортировка:
+- По дате (новые / старые)  
+- По цене (↑↓)  
+- По приоритету  
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### 📑 Пагинация:
+- Нумерованная пагинация
+- Кнопки вперед/назад
+- Отображение общего количества объявлений
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+## 📊 2. Страница статистики (/stats/summary)
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Полностью реализованы все требования:
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+### Карточки с данными:
+- Всего проверено
+- % одобренных
+- % отклонённых
+- Среднее время модерации
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+### Графики:
+- График активности по дням  
+- Круговая диаграмма решений  
+- Распределение по категориям  
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+Построены с помощью **Recharts**.
+
+## 🛠 Используемые технологии
+
+### Frontend:
+- **React 18**
+- **TypeScript**
+- **Vite**
+- **React Router**
+- **React Query**
+- **Axios**
+- **TailwindCSS**
+- **Recharts**
+
+### Backend (локально):
+- Использован тестовый сервер из задания:  
+  **tech-int3-server**  
+- Взаимодействие через REST API
+
+
+## ▶️ Запуск локально
+1. Клонировать репозиторий:
+
+2. Запустить локальный сервер:
+
+   Там будет инструкция, сервер должен запуститься на http://localhost:3001
+
+   https://github.com/avito-tech/tech-internship/tree/main/Tech%20Internships/Frontend/Frontend-trainee-assignment-autumn-2025/tech-int3-server
+
+4. Установить зависимости
+   ```bash
+   npm install
+
+5. Запустить приложение
+   ```bash
+   npm run dev
+
+6. Приложение будет доступно по адресу
+    http://localhost:5173
+    
