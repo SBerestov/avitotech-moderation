@@ -40,13 +40,13 @@ export const AdsPage: React.FC = () => {
 
       <Filters params={params} onChange={onChangeFilters} categories={categories} />
 
-      <div className="bg-white border rounded">
-        <div className="p-4 border-b">
+      <div className="bg-white  rounded">
+        <div className="p-4 ">
           <strong>Результаты</strong>
           <span className="ml-2 text-sm text-gray-600">Показано {typedData.ads.length} из {typedData.pagination.itemsPerPage}</span>
         </div>
 
-        <div className="p-4 space-y-2">
+        <div className="grid gap-4">
           {typedData.ads.map((ad: Ad) => (
             <AdCard key={ad.id} ad={ad} />
           ))}

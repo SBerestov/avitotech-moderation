@@ -2,6 +2,11 @@ import { useParams, useNavigate } from "react-router-dom";
 import { useState } from "react";
 import { useAd } from "../hooks/useAd";
 import { useApproveAd, useRejectAd, useRequestChanges } from "../hooks/useModeration";
+import arrowRight from "../assets/right-arrow.svg";
+import arrowLeft from "../assets/left-arrow.svg";
+import check from "../assets/check.png";
+import close from "../assets/close.png";
+import reload from "../assets/reload.png";
 
 const reasons = [
   "Запрещенный товар",
@@ -57,51 +62,27 @@ export const AdPage = () => {
   return (
     <div className="p-4 max-w-4xl mx-auto">
 
-      <div className="flex justify-between mb-4">
-        <button onClick={() => navigate("/list")} className="text-blue-600">
-          ← Назад к списку
-        </button>
-
-        <div className="flex gap-4">
-          {adId > 1 && (
-            <button
-              onClick={() => navigate(`/ads/${adId - 1}`)}
-              className="text-blue-600"
-            >
-              ← Предыдущее
-            </button>
-          )}
-
-          <button
-            onClick={() => navigate(`/ads/${adId + 1}`)}
-            className="text-blue-600"
-          >
-            Следующее →
-          </button>
-        </div>
-      </div>
-
       <h1 className="text-3xl font-bold mb-4">{ad.title}</h1>
 
       <div className="relative mb-6">
         <img
           src={ad.images[imageIndex]}
-          className="w-full h-80 object-cover rounded shadow"
+          className="w-full h-80 object-cover rounded-[22px] shadow"
           alt="Фото"
         />
 
         <button
           onClick={prevImage}
-          className="absolute top-1/2 left-2 bg-white p-2 rounded shadow"
+          className="absolute top-1/2 left-2 bg-white px-5 py-2 rounded-[22px] shadow"
         >
-          ←
+          <img src={arrowLeft} height={20} width={20} />
         </button>
 
         <button
           onClick={nextImage}
-          className="absolute top-1/2 right-2 bg-white p-2 rounded shadow"
+          className="absolute top-1/2 right-2 bg-white px-5 py-2 rounded-[22px] shadow"
         >
-          →
+          <img src={arrowRight} height={20} width={20} />
         </button>
       </div>
 
@@ -112,7 +93,7 @@ export const AdPage = () => {
         <tbody>
           {Object.entries(ad.characteristics).map(([k, v]) => (
             <tr key={k} className="border-b">
-              <td className="p-2 font-medium bg-gray-50">{k}</td>
+              <td className="p-2 font-medium bg-gray-50 border-r">{k}</td>
               <td className="p-2">{v}</td>
             </tr>
           ))}
@@ -120,7 +101,7 @@ export const AdPage = () => {
       </table>
 
       <h2 className="text-xl font-semibold mb-2">Продавец</h2>
-      <div className="border rounded p-4 bg-gray-50 mb-6">
+      <div className="border rounded-[22px] p-4 mb-6">
         <p><strong>Имя:</strong> {ad.seller.name}</p>
         <p><strong>Рейтинг:</strong> {ad.seller.rating}</p>
         <p><strong>Количество объявлений:</strong> {ad.seller.totalAds}</p>
@@ -132,7 +113,7 @@ export const AdPage = () => {
       {ad.moderationHistory.length === 0 ? (
         <p className="text-gray-500 mb-6">Нет данных</p>
       ) : (
-        <div className="border rounded mb-6">
+        <div className="border rounded-[22px] mb-6">
           {ad.moderationHistory.map((h) => (
             <div key={h.id} className="p-3 border-b">
               <p><strong>Модератор:</strong> {h.moderatorName}</p>
@@ -153,8 +134,8 @@ export const AdPage = () => {
           <button
             key={r}
             onClick={() => setReason(r)}
-            className={`px-3 py-1 rounded border ${
-              reason === r ? "bg-blue-600 text-white" : "bg-white"
+            className={`px-5 py-2.5 rounded-[22px] ${
+              reason === r ? "bg-[#646cff] text-white" : "bg-gray-200"
             }`}
           >
             {r}
@@ -166,30 +147,60 @@ export const AdPage = () => {
         value={comment}
         onChange={(e) => setComment(e.target.value)}
         placeholder="Комментарий (необязательно)"
-        className="border p-2 w-full rounded mb-4"
+        className="border px-5 py-2 w-full rounded-[22px] mb-4"
       />
 
       <div className="flex gap-3">
         <button
           onClick={() => approve.mutate(adId)}
-          className="px-4 py-2 bg-green-600 text-white rounded"
+          className="px-7 py-2.5 rounded-4xl flex items-center gap-2 bg-[#08F29B] border-b-4  hover:bg-[#07e28c]"
         >
-          Одобрить
+          <img src={check} height={15} width={15} className="mt-1" />
+          <span className="text-xl text-black font-bold">Одобрить</span>
         </button>
 
         <button
           onClick={doReject}
-          className="px-4 py-2 bg-red-600 text-white rounded"
+          className="px-7 py-2.5 rounded-4xl flex items-center gap-2 bg-[#FF5656] border-b-4  hover:bg-[#f04c4c]"
         >
-          Отклонить
+          <img src={close} height={15} width={15} className="mt-1" />
+          <span className="text-xl text-black font-bold">Отклонить</span>
         </button>
 
         <button
           onClick={doRequestChanges}
-          className="px-4 py-2 bg-yellow-500 text-white rounded"
+          className="px-7 py-2.5 rounded-4xl flex items-center gap-2 bg-[#FFD856] border-b-4  hover:bg-[#f7ce4c]"
         >
-          Вернуть на доработку
+          <img src={reload} height={15} width={15} className="mt-1" />
+          <span className="text-xl text-black font-bold">Вернуть на доработку</span>
         </button>
+      </div>
+
+      <div className="flex justify-between mt-15 mb-10">
+        <button onClick={() => navigate("/list")} className="flex items-center gap-2 px-5 py-2.5 rounded-[22px] bg-gray-200">
+          <img src={arrowLeft} height={20} width={20} />
+          <span>Назад к списку</span>
+        </button>
+
+        <div className="flex gap-4">
+          {adId > 1 && (
+            <button
+              onClick={() => navigate(`/ads/${adId - 1}`)}
+              className="flex items-center gap-2 px-5 py-2.5 rounded-[22px] bg-gray-200"
+            >
+              <img src={arrowLeft} height={20} width={20} />
+              <span>Предыдущее</span>
+            </button>
+          )}
+
+          <button
+            onClick={() => navigate(`/ads/${adId + 1}`)}
+            className="flex items-center gap-2 px-5 py-2.5 rounded-[22px] bg-gray-200"
+          >
+            <span>Следущее</span>
+            <img src={arrowRight} height={20} width={20} />
+          </button>
+        </div>
       </div>
     </div>
   );

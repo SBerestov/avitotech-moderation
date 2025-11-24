@@ -56,16 +56,16 @@ export const Filters: React.FC<Props> = ({ params, onChange, categories }) => {
   };
 
   return (
-    <section className="border p-4 rounded mb-4 bg-white">
+    <section className="border p-4 rounded-[22px] mb-4 bg-white">
       <form onSubmit={onSearch} className="flex gap-2 items-center mb-3">
         <input
           name="search"
           defaultValue={local.search ?? ""}
           placeholder="Поиск по названию..."
-          className="flex-1 border rounded px-3 py-2"
+          className="flex-1 border rounded-[22px] px-5 py-2"
         />
-        <button type="submit" className="px-3 py-2 bg-blue-600 text-white rounded">Найти</button>
-        <button type="button" onClick={resetAll} className="px-3 py-2 border rounded ml-2">
+        <button type="submit" className="px-5 py-2.5 rounded-[22px] bg-[#646cff] text-white">Найти</button>
+        <button type="button" onClick={resetAll} className="px-5 py-2.5 rounded-[22px] bg-gray-200">
           Сбросить
         </button>
       </form>
@@ -96,7 +96,7 @@ export const Filters: React.FC<Props> = ({ params, onChange, categories }) => {
               const v = e.target.value ? Number(e.target.value) : undefined;
               changeCategory(v);
             }}
-            className="w-full border rounded px-2 py-2"
+            className="w-full border rounded-[22px] px-5 py-2"
           >
             <option value="">Все категории</option>
             {categories.map(c => (
@@ -113,14 +113,14 @@ export const Filters: React.FC<Props> = ({ params, onChange, categories }) => {
               placeholder="мин"
               defaultValue={local.minPrice ?? ""}
               onBlur={(e) => applyPrice(Number(e.target.value) || undefined, local.maxPrice)}
-              className="w-1/2 border rounded px-2 py-2"
+              className="w-1/2 border rounded-[22px] px-5 py-2"
             />
             <input
               type="number"
               placeholder="макс"
               defaultValue={local.maxPrice ?? ""}
               onBlur={(e) => applyPrice(local.minPrice, Number(e.target.value) || undefined)}
-              className="w-1/2 border rounded px-2 py-2"
+              className="w-1/2 border rounded-[22px] px-5 py-2"
             />
           </div>
         </div>
@@ -136,7 +136,7 @@ export const Filters: React.FC<Props> = ({ params, onChange, categories }) => {
               setLocal(next);
               onChange(next);
             }}
-            className="border rounded px-2 py-2"
+            className="border rounded-[22px] px-5 py-2"
           >
             <option value="createdAt">По дате</option>
             <option value="price">По цене</option>
@@ -150,7 +150,7 @@ export const Filters: React.FC<Props> = ({ params, onChange, categories }) => {
               setLocal(next);
               onChange(next);
             }}
-            className="border rounded px-2 py-2"
+            className="border rounded-[22px] px-5 py-2"
           >
             <option value="desc">По убыванию</option>
             <option value="asc">По возрастанию</option>

@@ -27,7 +27,7 @@ export const Pagination: React.FC<Props> = ({ current, total, onChange }) => {
     <div className="flex items-center gap-2 mt-4">
       <button
         onClick={() => onChange(Math.max(1, current - 1))}
-        className="px-3 py-1 border rounded"
+        className="px-5 py-2.5 rounded-lg bg-gray-200"
         disabled={current === 1}
       >
         Назад
@@ -35,7 +35,7 @@ export const Pagination: React.FC<Props> = ({ current, total, onChange }) => {
 
       {pages[0] > 1 && (
         <>
-          <button className="px-3 py-1 border rounded" onClick={() => onChange(1)}>1</button>
+          <button className="px-5 py-2.5 rounded-lg bg-gray-200" onClick={() => onChange(1)}>1</button>
           {pages[0] > 2 && <span className="px-2">…</span>}
         </>
       )}
@@ -44,7 +44,7 @@ export const Pagination: React.FC<Props> = ({ current, total, onChange }) => {
         <button
           key={p}
           onClick={() => onChange(p)}
-          className={`px-3 py-1 border rounded ${p === current ? "bg-blue-600 text-white" : ""}`}
+          className={`px-5 py-2.5 rounded-lg ${p === current ? "bg-[#646cff] text-white" : "bg-gray-200"}`}
         >
           {p}
         </button>
@@ -53,13 +53,13 @@ export const Pagination: React.FC<Props> = ({ current, total, onChange }) => {
       {pages[pages.length - 1] < total && (
         <>
           {pages[pages.length - 1] < total - 1 && <span className="px-2">…</span>}
-          <button className="px-3 py-1 border rounded" onClick={() => onChange(total)}>{total}</button>
+          <button className="px-5 py-2.5 rounded-lg bg-gray-200" onClick={() => onChange(total)}>{total}</button>
         </>
       )}
 
       <button
         onClick={() => onChange(Math.min(total, current + 1))}
-        className="px-3 py-1 border rounded"
+        className="px-5 py-2.5 rounded-lg bg-gray-200"
         disabled={current === total}
       >
         Вперед
