@@ -61,7 +61,7 @@ export const StatsPage = () => {
 
       {/* График активности */}
       <h2 className="text-xl font-semibold mb-2">Активность по дням</h2>
-      <div className="h-64 mb-10 border rounded p-2 bg-white">
+      <div className="h-64 mb-10 border rounded-[22px] p-2 bg-white">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={activity}>
             <XAxis dataKey="date" />
@@ -76,7 +76,7 @@ export const StatsPage = () => {
 
       {/* Круговая диаграмма решений */}
       <h2 className="text-xl font-semibold mb-2">Распределение решений</h2>
-      <div className="h-64 mb-10 border rounded p-2 bg-white flex justify-center">
+      <div className="h-64 mb-10 border rounded-[22px] p-2 bg-white flex justify-center">
         <ResponsiveContainer width="60%" height="100%">
           <PieChart>
             <Pie
@@ -96,7 +96,7 @@ export const StatsPage = () => {
 
       {/* Категории */}
       <h2 className="text-xl font-semibold mb-2">По категориям</h2>
-      <div className="h-64 mb-10 border rounded p-2 bg-white">
+      <div className="h-64 mb-10 border rounded-[22px] p-2 bg-white">
         <ResponsiveContainer width="100%" height="100%">
           <BarChart data={categoryData}>
             <XAxis dataKey="name" />

@@ -4,7 +4,7 @@ interface CardProps {
 }
 
 export const Card = ({ title, value }: CardProps) => (
-  <div className="border p-4 rounded shadow bg-white">
+  <div className="border p-4 rounded-[22px] shadow bg-white">
     <p className="text-gray-500 text-sm">{title}</p>
     <p className="text-xl font-semibold">{value}</p>
   </div>

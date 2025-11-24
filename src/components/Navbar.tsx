@@ -17,7 +17,7 @@ export default function Navbar() {
             alt="Логотип" 
             className="h-8 w-auto"
           />
-          <span className="text-3xl font-bold text-black bg-[#646cff] rounded-4xl px-3 pb-1.25">Модерация</span>
+          <span className="text-3xl font-bold text-black bg-[#7d84ff] rounded-4xl px-3 pb-1.25">Модерация</span>
         </div>
         
         <div className="flex gap-2 absolute left-1/2 transform -translate-x-1/2">
@@ -26,7 +26,7 @@ export default function Navbar() {
             className={`text-base text-[#646cff] rounded-3xl py-2.5 px-4.5 ${
               isActive('/list') 
                 ? "bg-[#646cff] text-white font-semibold" 
-                : "text-[#646cff] hover:text-gray-900 hover:bg-gray-100"
+                : "text-[#646cff] hover:bg-gray-100"
             }`}
           >
             Объявления
@@ -36,7 +36,7 @@ export default function Navbar() {
             className={`text-base text-[#646cff] rounded-3xl py-2.5 px-4.5 ${
               isActive('/stats/summary') 
                 ? "bg-[#646cff] text-white font-semibold" 
-                : "text-[#646cff] hover:text-gray-900 hover:bg-gray-100"
+                : "text-[#646cff] hover:bg-gray-100"
             }`}
           >
             Статистика

@@ -57,7 +57,6 @@ export const AdPage = () => {
   return (
     <div className="p-4 max-w-4xl mx-auto">
 
-      {/* Навигация */}
       <div className="flex justify-between mb-4">
         <button onClick={() => navigate("/list")} className="text-blue-600">
           ← Назад к списку
@@ -82,10 +81,8 @@ export const AdPage = () => {
         </div>
       </div>
 
-      {/* Заголовок */}
       <h1 className="text-3xl font-bold mb-4">{ad.title}</h1>
 
-      {/* Галерея */}
       <div className="relative mb-6">
         <img
           src={ad.images[imageIndex]}
@@ -108,10 +105,8 @@ export const AdPage = () => {
         </button>
       </div>
 
-      {/* Описание */}
       <p className="text-gray-800 mb-6">{ad.description}</p>
 
-      {/* Характеристики */}
       <h2 className="text-xl font-semibold mb-2">Характеристики</h2>
       <table className="w-full border rounded mb-6">
         <tbody>
@@ -124,7 +119,6 @@ export const AdPage = () => {
         </tbody>
       </table>
 
-      {/* Блок продавца */}
       <h2 className="text-xl font-semibold mb-2">Продавец</h2>
       <div className="border rounded p-4 bg-gray-50 mb-6">
         <p><strong>Имя:</strong> {ad.seller.name}</p>
@@ -133,7 +127,6 @@ export const AdPage = () => {
         <p><strong>Дата регистрации:</strong> {new Date(ad.seller.registeredAt).toLocaleString()}</p>
       </div>
 
-      {/* История модерации */}
       <h2 className="text-xl font-semibold mb-2">История модерации</h2>
 
       {ad.moderationHistory.length === 0 ? (
@@ -151,10 +144,8 @@ export const AdPage = () => {
         </div>
       )}
 
-      {/* Панель модерации */}
       <h2 className="text-xl font-semibold mb-3">Действия модератора</h2>
 
-      {/* Причины */}
       <p className="mb-1 text-sm text-gray-600">Укажите причину (обязательно для отклонения/возврата)</p>
 
       <div className="flex flex-wrap gap-2 mb-3">
@@ -171,7 +162,6 @@ export const AdPage = () => {
         ))}
       </div>
 
-      {/* Комментарий */}
       <textarea
         value={comment}
         onChange={(e) => setComment(e.target.value)}
@@ -179,7 +169,6 @@ export const AdPage = () => {
         className="border p-2 w-full rounded mb-4"
       />
 
-      {/* Кнопки */}
       <div className="flex gap-3">
         <button
           onClick={() => approve.mutate(adId)}

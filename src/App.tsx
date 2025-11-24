@@ -1,8 +1,8 @@
-import { BrowserRouter, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter, Routes, Route, Link, Navigate } from "react-router-dom";
 import { AdsPage } from "./pages/AdsPage";
 import { AdPage } from "./pages/AdPage";
 import { StatsPage } from "./pages/StatsPage";
-import Navbar from "./components/NavBar";
+import Navbar from "./components/Navbar";
 
 export default function App() {
   return (
@@ -11,7 +11,7 @@ export default function App() {
       <div className="mt-20" />
       
       <Routes>
-        <Route path="/" element={<AdsPage />} />
+        <Route path="/" element={<Navigate to="/list" replace />} />
         <Route path="/list" element={<AdsPage />} />
         <Route path="/ads" element={<AdsPage />} />
         <Route path="/ads/:id" element={<AdPage />} />
