@@ -1,5 +1,5 @@
 import { api } from "./axios";
-import type { Ad, AdsResponse, AdsListParams } from "../types/ad";
+import type { Ad, AdsResponse, AdsListParams, ModerationAction } from "../types/ad";
 
 export const getAds = async (params?: AdsListParams): Promise<AdsResponse> => {
   const res = await api.get("/ads", { params });
@@ -16,8 +16,14 @@ export const approveAd = async (id: number) => {
   return res.data;
 };
 
-export const rejectAd = ({ id, reason, comment }) =>
-  api.post(`/ads/${id}/reject`, { reason, comment });
+export const rejectAd = async (action: ModerationAction) => {
+  const { id, reason, comment } = action;
+  const res = await api.post(`/ads/${id}/reject`, { reason, comment });
+  return res.data;
+}
 
-export const requestChanges = ({ id, reason, comment }) =>
-  api.post(`/ads/${id}/request-changes`, { reason, comment });
+export const requestChanges = async (action: ModerationAction) => {
+  const { id, reason, comment } = action;
+  const res = await api.post(`/ads/${id}/request-changes`, { reason, comment });
+  return res.data;
+};

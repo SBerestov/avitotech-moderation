@@ -59,3 +59,9 @@ export type AdsListParams = {
   sortBy?: "createdAt" | "price" | "priority";
   sortOrder?: "asc" | "desc";
 };
+
+export type ModerationAction = {
+  id: number;
+  reason: string;
+  comment?: string;
+};

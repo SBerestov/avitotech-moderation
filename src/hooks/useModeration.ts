@@ -4,7 +4,7 @@ import { approveAd, rejectAd, requestChanges } from "../api/ads";
 export const useApproveAd = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: (id: number) => approveAd(id),
+    mutationFn: approveAd,
     onSuccess: () => qc.invalidateQueries(),
   });
 };
@@ -12,8 +12,7 @@ export const useApproveAd = () => {
 export const useRejectAd = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, reason }: { id: number; reason: string }) =>
-      rejectAd(id, reason),
+    mutationFn: rejectAd,
     onSuccess: () => qc.invalidateQueries(),
   });
 };
@@ -21,8 +20,7 @@ export const useRejectAd = () => {
 export const useRequestChanges = () => {
   const qc = useQueryClient();
   return useMutation({
-    mutationFn: ({ id, comment }: { id: number; comment: string }) =>
-      requestChanges(id, comment),
+    mutationFn: requestChanges,
     onSuccess: () => qc.invalidateQueries(),
   });
 };
